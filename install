@@ -10,7 +10,7 @@ else
   git clone --recursive "$GITHUB_URL" "$DOTPATH"
 fi
 
-cd ${DOTPATH}}
+cd ${DOTPATH}
 for dotfile in .?*
 do
   if [ $dotfile != '..' ] && [ $dotfile != '.git' ]
