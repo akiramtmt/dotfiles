@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOTPATH="~/.dotfiles"
+DOTPATH="${PWD}/.dotfiles"
 GITHUB_URL="https://github.com/akiramtmt/dotfiles.git"
 
 if which git ; then
