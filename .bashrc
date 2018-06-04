@@ -22,7 +22,7 @@ export HISTFILESIZE=10000
 export HISTTIMEFORMAT='%Y/%m/%d %T '
 export EDITOR="/usr/bin/vim"
 
-if [[ -f "/usr/local/bin/aws_completer"]] ; then
+if [[ -f "/usr/local/bin/aws_completer" ]] ; then
 	complete -C '/usr/local/bin/aws_completer' aws
 fi
 
