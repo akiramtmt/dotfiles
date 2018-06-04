@@ -43,5 +43,3 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 vim +'PlugInstall --sync' +qa
 
 sudo yum groupinstall -y "Development Tools"
-
-source ~/.bashrc
