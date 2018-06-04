@@ -20,11 +20,16 @@ do
 done
 
 if [[ -d "dircolors" ]] ; then
-  curl -sS https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.ansi-dark -o dircolors/dircolors.solarized-ansi-dark
-  curl -sS https://raw.githubusercontent.com/gcollura/dotfiles/master/dircolors/dircolors.molokai -o dircolors/dircolors.molokai
+  curl -o dircolors/dircolors.solarized-ansi-dark \
+    -sSL https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.ansi-dark
+  curl -o dircolors/dircolors.molokai \
+    -sSL https://raw.githubusercontent.com/gcollura/dotfiles/master/dircolors/dircolors.molokai
 fi
 
 sudo yum groupinstall -y "Development Tools"
+
+curl -fLo ~/.vim/autoload/plug.vim \
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 #if [ -d ~/.vim/bundle ]
 #then
@@ -36,3 +41,6 @@ sudo yum groupinstall -y "Development Tools"
 #  git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 #  vim -u ~/.vimrc -i NONE -c "try | NeoBundleUpdate! | finally | q! | endtry" -e -s
 #fi
+
+vim +'PlugInstall --sync' +qa
+
