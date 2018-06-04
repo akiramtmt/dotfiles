@@ -1,8 +1,8 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'itchyny/lightline.vim'
-Plug 'tomasr/molokai'
-Plug 'Shougo/vimproc.vim', { 'dir': '~/.vim/plugged/vimproc.vim', 'do': 'make' }
+Plug 'tomasr/molokai', {'do': 'cp colors/* ~/.vim/colors/'}
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
 call plug#end()
 
