@@ -26,6 +26,6 @@ if [[ -f "/usr/local/bin/aws_completer" ]] ; then
 	complete -C '/usr/local/bin/aws_completer' aws
 fi
 
-eval "$(dircolors "$HOME/dircolors/dircolors.molokai")"
+eval "$(dircolors "$HOME/.dotfiles/dircolors/dircolors.molokai")"
 
 export PROMPT_COMMAND="history -a"
