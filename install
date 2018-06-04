@@ -4,7 +4,7 @@ DOTPATH="${PWD}/.dotfiles"
 GITHUB_URL="https://github.com/akiramtmt/dotfiles.git"
 
 if which git ; then
-  if [[ -d "$DOTPATH" ]] then
+  if [[ -d "$DOTPATH" ]] ; then
     cd ${DOTPATH}
     git pull
   else
@@ -12,7 +12,7 @@ if which git ; then
   fi
 else
   sudo yum install -y git
-  if [[ -d "$DOTPATH" ]] then
+  if [[ -d "$DOTPATH" ]] ; then
     cd ${DOTPATH}
     git pull
   else
