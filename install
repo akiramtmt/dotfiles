@@ -1,0 +1,38 @@
+#!/bin/bash
+
+DOTPATH="~/.dotfiles"
+GITHUB_URL="https://github.com/akiramtmt/dotfiles.git"
+
+if which git ; then
+  git clone --recursive "$GITHUB_URL" "$DOTPATH"
+else
+  sudo yum install -y git
+  git clone --recursive "$GITHUB_URL" "$DOTPATH"
+fi
+
+cd ${DOTPATH}}
+for dotfile in .?*
+do
+  if [ $dotfile != '..' ] && [ $dotfile != '.git' ]
+  then
+    ln -fs "$PWD/$dotfile" $HOME
+  fi
+done
+
+if [[ -d "dircolors" ]] ; then
+  curl -sS https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.ansi-dark -o dircolors/dircolors.solarized-ansi-dark
+  curl -sS https://raw.githubusercontent.com/gcollura/dotfiles/master/dircolors/dircolors.molokai -o dircolors/dircolors.molokai
+fi
+
+sudo yum groupinstall -y "Development Tools"
+
+#if [ -d ~/.vim/bundle ]
+#then
+#  cd ~/.vim/bundle/neobundle.vim
+#  git pull
+#  vim -u ~/.vimrc -i NONE -c "try | NeoBundleUpdate! | finally | q! | endtry" -e -s -V1
+#else
+#  mkdir -p ~/.vim/bundle
+#  git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+#  vim -u ~/.vimrc -i NONE -c "try | NeoBundleUpdate! | finally | q! | endtry" -e -s
+#fi
