@@ -29,6 +29,9 @@ catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme desert
 endtry
 
+" Vim-Json:
+let g:vim_json_syntax_conceal = 0
+
 set number
 set ignorecase
 set nobackup
