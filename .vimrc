@@ -48,6 +48,9 @@ set expandtab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+
+let g:vim_json_syntax_conceal = 0
+
 augroup auto_comment_off
   autocmd!
   autocmd BufEnter * setlocal formatoptions-=r
