@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cd
 DOTPATH="${PWD}/.dotfiles"
 GITHUB_URL="https://github.com/akiramtmt/dotfiles.git"
 
@@ -42,4 +43,9 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 vim +'PlugInstall --sync' +qa
 
-sudo yum groupinstall -y "Development Tools"
+pkg_installed=$(yum grouplist | sed '/^Installed Groups:/,$!d;/^Available Groups:/,$d;/^Installed Groups:/d;s/^[[:space:]]*//')
+if echo ${pkg_installed}}|grep 'Development' > /dev/null; then
+  :
+else
+  sudo yum groupinstall -y "Development Tools"
+fi
