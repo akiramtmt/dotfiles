@@ -49,3 +49,9 @@ if echo ${pkg_installed}}|grep 'Development' > /dev/null; then
 else
   sudo yum groupinstall -y "Development Tools"
 fi
+
+if [[ -d ~/bin ]] ; then
+  :
+else
+  mkdir -p ~/bin
+fi
