@@ -25,6 +25,7 @@ export EDITOR="/usr/bin/vim"
 if [[ -f "/usr/local/bin/aws_completer" ]] ; then
 	complete -C '/usr/local/bin/aws_completer' aws
 fi
+complete -cf sudo
 
 eval "$(dircolors "$HOME/.dotfiles/dircolors/dircolors.molokai")"
 
