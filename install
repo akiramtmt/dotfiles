@@ -21,6 +21,13 @@ else
   fi
 fi
 
+pkg_installed=$(yum grouplist | sed '/^Installed Groups:/,$!d;/^Available Groups:/,$d;/^Installed Groups:/d;s/^[[:space:]]*//')
+if echo ${pkg_installed}}|grep 'Development' > /dev/null; then
+  :
+else
+  sudo yum groupinstall -y "Development Tools"
+fi
+
 cd ${DOTPATH}
 for dotfile in .?*
 do
@@ -42,13 +49,6 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 vim +'PlugInstall --sync' +qa
-
-pkg_installed=$(yum grouplist | sed '/^Installed Groups:/,$!d;/^Available Groups:/,$d;/^Installed Groups:/d;s/^[[:space:]]*//')
-if echo ${pkg_installed}}|grep 'Development' > /dev/null; then
-  :
-else
-  sudo yum groupinstall -y "Development Tools"
-fi
 
 if [[ -d ~/bin ]] ; then
   :
