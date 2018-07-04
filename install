@@ -26,6 +26,7 @@ if echo ${pkg_installed}}|grep 'Development' > /dev/null; then
   :
 else
   sudo yum groupinstall -y "Development Tools"
+  sudo yum install -y jq
   sudo yum install -y openssl-devel bzip2-devel readline-devel sqlite-devel
 fi
 
