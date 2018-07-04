@@ -30,3 +30,14 @@ complete -cf sudo
 eval "$(dircolors "$HOME/.dotfiles/dircolors/dircolors.molokai")"
 
 export PROMPT_COMMAND="history -a"
+
+RESPATH=".dotfiles/res"
+cd ${RESPATH}
+for resfile in .?*
+do
+  if [[ ${resfile} != '.' ]] && [[ ${resfile} != '..' ]]
+  then
+    . ${resfile}
+  fi
+done
+cd ~
