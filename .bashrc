@@ -31,7 +31,7 @@ eval "$(dircolors "$HOME/.dotfiles/dircolors/dircolors.molokai")"
 
 export PROMPT_COMMAND="history -a"
 
-RESPATH=".dotfiles/res"
+RESPATH="$HOME/.dotfiles/res"
 cd ${RESPATH}
 for resfile in .?*
 do
