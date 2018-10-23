@@ -19,15 +19,11 @@ endif
 " Required:
 filetype plugin indent on
 
-set t_Co=256
-syntax enable
-try
-  colorscheme molokai
-  let g:molokai_original = 1
-  let g:rehash256 = 1
-catch /^Vim\%((\a\+)\)\=:E185/
-  colorscheme desert
-endtry
+colorscheme molokai
+syntax on
+let g:molokai_original = 1
+let g:rehash256 = 1
+set background=dark
 
 " Vim-Json:
 let g:vim_json_syntax_conceal = 0
@@ -49,7 +45,6 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 
-let g:vim_json_syntax_conceal = 0
 
 augroup auto_comment_off
   autocmd!
