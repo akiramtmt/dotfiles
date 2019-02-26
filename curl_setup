@@ -1,6 +1,34 @@
 #!/bin/bash
 
-DOTPATH="${PWD}/dotfiles"
+cd
+DOTPATH="${PWD}/.dotfiles"
+GITHUB_URL="https://github.com/akiramtmt/dotfiles.git"
+
+if which git ; then
+  if [[ -d "$DOTPATH" ]] ; then
+    cd ${DOTPATH}
+    git pull
+  else
+    git clone --recursive "$GITHUB_URL" "$DOTPATH"
+  fi
+else
+  sudo yum install -y git
+  if [[ -d "$DOTPATH" ]] ; then
+    cd ${DOTPATH}
+    git pull
+  else
+    git clone --recursive "$GITHUB_URL" "$DOTPATH"
+  fi
+fi
+
+pkg_installed=$(yum grouplist | sed '/^Installed Groups:/,$!d;/^Available Groups:/,$d;/^Installed Groups:/d;s/^[[:space:]]*//')
+if echo ${pkg_installed}}|grep 'Development' > /dev/null; then
+  :
+else
+  sudo yum groupinstall -y "Development Tools"
+  sudo yum install -y jq
+  sudo yum install -y openssl-devel bzip2-devel readline-devel sqlite-devel
+fi
 
 cd ${DOTPATH}
 for dotfile in .?*

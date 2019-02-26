@@ -4,6 +4,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'tomasr/molokai', {'do': 'cp colors/* ~/.vim/colors/'}
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'elzr/vim-json'
+Plug 'stephpy/vim-yaml'
 
 call plug#end()
 
