@@ -1,26 +1,32 @@
 #!/bin/bash
 
-DOTPATH="${PWD}/dotfiles"
+cd ${HOME}
+DOTFILES_PATH="${HOME}/dotfiles"
+DIRCOLORS_PATH="${DOTFILES_PATH}/dircolors"
 
-cd ${DOTPATH}
-for dotfile in .?*
+cd ${DOTFILES_PATH}
+for DOTFILE in .?*
 do
-  if [ $dotfile != '..' ] && [ $dotfile != '.git' ]
+  if [ ${DOTFILE} != '..' ] && [ ${DOTFILE} != '.git' ]
   then
-    ln -fs "$PWD/$dotfile" $HOME
+    ln -fs "${PWD}/${DOTFILE}" ${HOME}
   fi
 done
 
-if [[ -d "dircolors" ]] ; then
-  curl -o dircolors/dircolors.solarized-ansi-dark --create-dirs \
+if [[ -d ${DIRCOLORS_PATH} ]] ; then
+  curl -o ${DIRCOLORS_PATH}/dircolors.solarized-ansi-dark --create-dirs \
     -sSL https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.ansi-dark
-  curl -o dircolors/dircolors.molokai --create-dirs \
+  curl -o ${DIRCOLORS_PATH}/dircolors.molokai --create-dirs \
     -sSL https://raw.githubusercontent.com/gcollura/dotfiles/master/dircolors/dircolors.molokai
 fi
 
 mkdir -p ~/.vim/autoload ~/.vim/colors ~/.vim/plugged
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+curl -fsLo ~/.vim/autoload/plug.vim --create-dirs \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+curl -fsLo ~/.vim/colors/molokai.vim --create-dirs \
+  https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
+
 
 vim +'PlugInstall --sync' +qa
 
