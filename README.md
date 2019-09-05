@@ -5,7 +5,7 @@ bash -c "$(curl -L https://raw.githubusercontent.com/akiramtmt/dotfiles/master/c
 ```
 
 ```bash
-git clone git@github.com:akiramtmt/dotfiles.git
+git clone https://github.com/akiramtmt/dotfiles.git
 cd dotfiles
 ./install
 ```
