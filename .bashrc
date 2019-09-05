@@ -16,11 +16,13 @@ alias view='vim -R '
 alias sudo='sudo -E '
 alias ls='ls -a --color=auto '
 alias ll='ls -la --color=auto '
+
 export GREP_OPTIONS='--color=auto'
 export PS1='[\t \u@\h:\w]\$ '
 export HISTSIZE=10000
 export HISTFILESIZE=10000
 export HISTTIMEFORMAT='%Y/%m/%d %T '
+export PROMPT_COMMAND="history -a"
 export EDITOR="/usr/bin/vim"
 
 AWS_COMPLETER=$(which aws_completer)
@@ -29,10 +31,10 @@ if [[ -f "${AWS_COMPLETER}" ]] ; then
 fi
 complete -cf sudo
 
+umask 0022
+
 DIRCOLORS_PATH="${HOME}/dotfiles/dircolors"
 eval "$(dircolors "${DIRCOLORS_PATH}/dircolors.molokai")"
-
-export PROMPT_COMMAND="history -a"
 
 RESPATH="$HOME/dotfiles/res"
 cd ${RESPATH}
